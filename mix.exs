@@ -20,7 +20,6 @@ defmodule Lyex.MixProject do
   defp deps do
     [
       {:erlsom, "~> 1.4"},
-      {:detergent, "~> 0.3.0"},
       {:httpoison, "~> 1.5"},
       {:accessible, "~> 0.2"}
     ]

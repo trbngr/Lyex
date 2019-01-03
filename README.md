@@ -1,6 +1,12 @@
 # Lyex
 
-**TODO: Add description**
+I've tried all the SOAP libraries for Elixir without success.
+
+So Lyex was born. 
+
+I had to learn a ~~bit~~ lot about WSDL. I'm pretty sure this won't work on a bunch of WSDLs in the wild.
+
+Much more to do.
 
 ## Installation
 
