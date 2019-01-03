@@ -34,10 +34,9 @@ end
 
 defmodule OtherModule do
   def run do
-    alias Keefe
 
     response =
-      KeefeClient.lookup_recipient(%LookupRecipientInput{
+      KeefeClient.lookup_recipient(%Keefe.LookupRecipientInput{
         Auth: %{
           VendorCode: "redacted",
           UserId: "redacted",
