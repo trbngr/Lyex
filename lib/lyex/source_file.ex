@@ -12,6 +12,8 @@ defmodule Lyex.SourceFile do
         cache_file
 
       {:miss, cache_file} ->
+        HTTPoison.start()
+
         with {:ok, %{body: body}} <- HTTPoison.get(url) do
           cache_remote_file(%{body: body, cache_file: cache_file})
         end
