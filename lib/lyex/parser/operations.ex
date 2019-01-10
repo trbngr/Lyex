@@ -154,7 +154,7 @@ defmodule Lyex.Parser.Operations do
 
     case type do
       nil ->
-        raise "Unable to find type '#{type}'"
+        raise "Unable to find type '#{name}'"
 
       %{elements: elements} = type ->
         elements = Enum.map(elements, &resolve_element_type(&1, definition))
