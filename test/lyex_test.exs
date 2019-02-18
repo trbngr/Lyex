@@ -6,10 +6,14 @@ defmodule LyexTest do
   #   wsdl: "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?singleWsdl",
   #   cache_dir: "./priv"
 
+  # use Lyex.Client,
+  #   service_name: "keefe",
+  #   wsdl: "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?wsdl",
+  #   cache_dir: "./priv"
+
   use Lyex.Client,
-    service_name: "keefe",
-    wsdl: "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?wsdl",
-    cache_dir: "./priv"
+    service_name: "vin_search",
+    wsdl: "http://vinsearch.eurotaxglass.com/vin-intl/?wsdl"
 
   test "create client" do
     alias Keefe.LookupRecipientInput

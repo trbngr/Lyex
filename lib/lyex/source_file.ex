@@ -1,8 +1,9 @@
 defmodule Lyex.SourceFile do
+  @spec resolve_file(Lyex.t()) :: {Lyex.t(), binary()}
   def resolve_file(%Lyex{wsdl: wsdl} = spec) do
     case URI.parse(wsdl) do
-      %{authority: nil} -> {wsdl, spec}
-      uri -> {fetch_remote(spec, uri), spec}
+      %{authority: nil} -> {spec, wsdl}
+      uri -> {spec, fetch_remote(spec, uri)}
     end
   end
 

@@ -7,7 +7,8 @@ defmodule Lyex do
 
   defstruct service_name: nil, wsdl: nil, cache_dir: @default_cache_dir
 
-  alias Lyex.{SourceFile, Parser}
+  alias Lyex.SourceFile
+  alias Lyex.Wsdl.{Compiler, Parser}
 
   def init(%Lyex{wsdl: nil}), do: raise(%Lyex.Error{message: "wsdl must be set."})
   def init(%Lyex{cache_dir: nil}), do: raise(%Lyex.Error{message: "cache_dir must be set."})
@@ -17,6 +18,8 @@ defmodule Lyex do
     spec
     |> SourceFile.resolve_file()
     |> Parser.parse()
+
+    # |> Compiler.compile()
   end
 
   def init(_), do: usage()
@@ -27,10 +30,10 @@ defmodule Lyex do
     %Lyex{wsdl: "path or url"} |> Lyex.init()
     """)
   end
-end
 
-defmodule Boolean do
-  def parse("true"), do: true
-  def parse('true'), do: true
-  def parse(_), do: false
+  defimpl String.Chars do
+    def to_string(lyex) do
+      inspect(lyex, pretty: true)
+    end
+  end
 end

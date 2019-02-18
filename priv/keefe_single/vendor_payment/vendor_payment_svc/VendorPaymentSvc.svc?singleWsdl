@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="VendorPaymentSvc" targetNamespace="http://www.keefecommissary.net/VendorPaymentService/v0101" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" 
+    xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" 
+    xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" 
+    xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" 
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+    xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:tns="http://www.keefecommissary.net/VendorPaymentService/v0101" 
+    xmlns:wsa10="http://www.w3.org/2005/08/addressing" 
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+    <wsp:Policy wsu:Id="BasicHttpBinding_IVendorPaymentSvc_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken RequireClientCertificate="false"/>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsdl:types>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://www.keefecommissary.net/VendorPaymentService/v0101" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:import namespace="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            <xs:element name="RegisterDepositor">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="input" nillable="true" type="q1:RegisterDepositorInput" 
+                            xmlns:q1="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RegisterDepositorResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RegisterDepositorResult" nillable="true" type="q2:RegisterDepositorOutput" 
+                            xmlns:q2="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PreValidateDeposit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="input" nillable="true" type="q3:PreValidateDepositInput" 
+                            xmlns:q3="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PreValidateDepositResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="PreValidateDepositResult" nillable="true" type="q4:PreValidateDepositOutput" 
+                            xmlns:q4="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PostDeposit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="input" nillable="true" type="q5:PostDepositInput" 
+                            xmlns:q5="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PostDepositResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="PostDepositResult" nillable="true" type="q6:PostDepositOutput" 
+                            xmlns:q6="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupRecipient">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="input" nillable="true" type="q7:LookupRecipientInput" 
+                            xmlns:q7="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupRecipientResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="LookupRecipientResult" nillable="true" type="q8:LookupRecipientOutput" 
+                            xmlns:q8="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="VoidDeposit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="input" nillable="true" type="q9:VoidDepositInput" 
+                            xmlns:q9="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="VoidDepositResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="VoidDepositResult" nillable="true" type="q10:VoidDepositOutput" 
+                            xmlns:q10="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+            <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+            <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+            <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+            <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+            <xs:element name="byte" nillable="true" type="xs:byte"/>
+            <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+            <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+            <xs:element name="double" nillable="true" type="xs:double"/>
+            <xs:element name="float" nillable="true" type="xs:float"/>
+            <xs:element name="int" nillable="true" type="xs:int"/>
+            <xs:element name="long" nillable="true" type="xs:long"/>
+            <xs:element name="QName" nillable="true" type="xs:QName"/>
+            <xs:element name="short" nillable="true" type="xs:short"/>
+            <xs:element name="string" nillable="true" type="xs:string"/>
+            <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+            <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+            <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+            <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+            <xs:element name="char" nillable="true" type="tns:char"/>
+            <xs:simpleType name="char">
+                <xs:restriction base="xs:int"/>
+            </xs:simpleType>
+            <xs:element name="duration" nillable="true" type="tns:duration"/>
+            <xs:simpleType name="duration">
+                <xs:restriction base="xs:duration">
+                    <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+                    <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+                    <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="guid" nillable="true" type="tns:guid"/>
+            <xs:simpleType name="guid">
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:attribute name="FactoryType" type="xs:QName"/>
+            <xs:attribute name="Id" type="xs:ID"/>
+            <xs:attribute name="Ref" type="xs:IDREF"/>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PaymentServiceEngine" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://schemas.datacontract.org/2004/07/PaymentServiceEngine">
+            <xs:complexType name="RegisterDepositorInput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="AltEmail" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Auth" nillable="true" type="tns:Authentication"/>
+                    <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="City" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="DOB" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="DepositAmount" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="FacilityCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="HomePhone" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="State" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="WorkPhone" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="RegisterDepositorInput" nillable="true" type="tns:RegisterDepositorInput"/>
+            <xs:complexType name="Authentication">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="VendorCode" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Authentication" nillable="true" type="tns:Authentication"/>
+            <xs:complexType name="RegisterDepositorOutput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Result" nillable="true" type="tns:ResultInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="RegisterDepositorOutput" nillable="true" type="tns:RegisterDepositorOutput"/>
+            <xs:complexType name="ResultInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Code" type="tns:ResultCode"/>
+                    <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ResultInfo" nillable="true" type="tns:ResultInfo"/>
+            <xs:simpleType name="ResultCode">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="SUCCESS"/>
+                    <xs:enumeration value="SYSTEM_ERROR"/>
+                    <xs:enumeration value="AUTHENTICATION_FAILED"/>
+                    <xs:enumeration value="INVALID_INPUT_VALUES"/>
+                    <xs:enumeration value="INVALID_FACILITY"/>
+                    <xs:enumeration value="INVALID_RESIDENT"/>
+                    <xs:enumeration value="INVALID_DEPOSITOR"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="ResultCode" nillable="true" type="tns:ResultCode"/>
+            <xs:complexType name="PreValidateDepositInput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Amount" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="Auth" nillable="true" type="tns:Authentication"/>
+                    <xs:element minOccurs="0" name="FacilityCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ResidentNumber" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="PreValidateDepositInput" nillable="true" type="tns:PreValidateDepositInput"/>
+            <xs:complexType name="PreValidateDepositOutput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="DOBDay" type="xs:int"/>
+                    <xs:element minOccurs="0" name="DOBMonth" type="xs:int"/>
+                    <xs:element minOccurs="0" name="DOBYear" type="xs:int"/>
+                    <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="KeefeTransId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="MaxDepositAmount" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="Result" nillable="true" type="tns:ResultInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="PreValidateDepositOutput" nillable="true" type="tns:PreValidateDepositOutput"/>
+            <xs:complexType name="PostDepositInput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="AmountCollected" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="Auth" nillable="true" type="tns:Authentication"/>
+                    <xs:element minOccurs="0" name="DepositAmount" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="DepositorSSN" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="FacilityCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="KeefeTransId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="PurposeCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ResidentNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ServiceFee" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="SurchargeFee" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="VendorTransId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="PostDepositInput" nillable="true" type="tns:PostDepositInput"/>
+            <xs:complexType name="PostDepositOutput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="FacilityName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="KeefeTransId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Result" nillable="true" type="tns:ResultInfo"/>
+                    <xs:element minOccurs="0" name="VendorTransId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="PostDepositOutput" nillable="true" type="tns:PostDepositOutput"/>
+            <xs:complexType name="LookupRecipientInput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Auth" nillable="true" type="tns:Authentication"/>
+                    <xs:element minOccurs="0" name="FacilityCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="RecipientNumber" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="LookupRecipientInput" nillable="true" type="tns:LookupRecipientInput"/>
+            <xs:complexType name="LookupRecipientOutput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="DOBDay" type="xs:int"/>
+                    <xs:element minOccurs="0" name="DOBMonth" type="xs:int"/>
+                    <xs:element minOccurs="0" name="DOBYear" type="xs:int"/>
+                    <xs:element minOccurs="0" name="FacilityName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="MaxDepositAmount" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="Result" nillable="true" type="tns:ResultInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="LookupRecipientOutput" nillable="true" type="tns:LookupRecipientOutput"/>
+            <xs:complexType name="VoidDepositInput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Auth" nillable="true" type="tns:Authentication"/>
+                    <xs:element minOccurs="0" name="FacilityCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="KeefeTransId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ResidentNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="VendorTransId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="VoidDepositInput" nillable="true" type="tns:VoidDepositInput"/>
+            <xs:complexType name="VoidDepositOutput">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="FacilityName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="KeefeTransId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Result" nillable="true" type="tns:ResultInfo"/>
+                    <xs:element minOccurs="0" name="VendorTransId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="VoidDepositOutput" nillable="true" type="tns:VoidDepositOutput"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="IVendorPaymentSvc_RegisterDepositor_InputMessage">
+        <wsdl:part name="parameters" element="tns:RegisterDepositor"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_RegisterDepositor_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RegisterDepositorResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_PreValidateDeposit_InputMessage">
+        <wsdl:part name="parameters" element="tns:PreValidateDeposit"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_PreValidateDeposit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:PreValidateDepositResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_PostDeposit_InputMessage">
+        <wsdl:part name="parameters" element="tns:PostDeposit"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_PostDeposit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:PostDepositResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_LookupRecipient_InputMessage">
+        <wsdl:part name="parameters" element="tns:LookupRecipient"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_LookupRecipient_OutputMessage">
+        <wsdl:part name="parameters" element="tns:LookupRecipientResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_VoidDeposit_InputMessage">
+        <wsdl:part name="parameters" element="tns:VoidDeposit"/>
+    </wsdl:message>
+    <wsdl:message name="IVendorPaymentSvc_VoidDeposit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:VoidDepositResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="IVendorPaymentSvc">
+        <wsdl:operation name="RegisterDepositor">
+            <wsdl:input wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/RegisterDepositor" message="tns:IVendorPaymentSvc_RegisterDepositor_InputMessage"/>
+            <wsdl:output wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/RegisterDepositorResponse" message="tns:IVendorPaymentSvc_RegisterDepositor_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="PreValidateDeposit">
+            <wsdl:input wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/PreValidateDeposit" message="tns:IVendorPaymentSvc_PreValidateDeposit_InputMessage"/>
+            <wsdl:output wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/PreValidateDepositResponse" message="tns:IVendorPaymentSvc_PreValidateDeposit_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="PostDeposit">
+            <wsdl:input wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/PostDeposit" message="tns:IVendorPaymentSvc_PostDeposit_InputMessage"/>
+            <wsdl:output wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/PostDepositResponse" message="tns:IVendorPaymentSvc_PostDeposit_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="LookupRecipient">
+            <wsdl:input wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/LookupRecipient" message="tns:IVendorPaymentSvc_LookupRecipient_InputMessage"/>
+            <wsdl:output wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/LookupRecipientResponse" message="tns:IVendorPaymentSvc_LookupRecipient_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="VoidDeposit">
+            <wsdl:input wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/VoidDeposit" message="tns:IVendorPaymentSvc_VoidDeposit_InputMessage"/>
+            <wsdl:output wsaw:Action="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/VoidDepositResponse" message="tns:IVendorPaymentSvc_VoidDeposit_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_IVendorPaymentSvc" type="tns:IVendorPaymentSvc">
+        <wsp:PolicyReference URI="#BasicHttpBinding_IVendorPaymentSvc_policy"/>
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="RegisterDepositor">
+            <soap:operation soapAction="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/RegisterDepositor" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="PreValidateDeposit">
+            <soap:operation soapAction="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/PreValidateDeposit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="PostDeposit">
+            <soap:operation soapAction="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/PostDeposit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="LookupRecipient">
+            <soap:operation soapAction="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/LookupRecipient" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="VoidDeposit">
+            <soap:operation soapAction="http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/VoidDeposit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="VendorPaymentSvc">
+        <wsdl:port name="BasicHttpBinding_IVendorPaymentSvc" binding="tns:BasicHttpBinding_IVendorPaymentSvc">
+            <soap:address location="https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
