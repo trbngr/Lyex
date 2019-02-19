@@ -3,7 +3,8 @@ defmodule LyexTest do
 
   use Lyex.Client,
     service_name: "vin_search",
-    wsdl: "http://vinsearch.eurotaxglass.com/vin-intl/?wsdl"
+    wsdl: "http://vinsearch.eurotaxglass.com/vin-intl/?wsdl",
+    cache_dir: "./test/wsdls"
 
   test "create client" do
     %VinSearch.GetCacheInput{} |> IO.inspect()

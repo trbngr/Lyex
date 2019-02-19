@@ -7,7 +7,6 @@ defmodule Lyex.Wsdl.Compiler do
   end
 
   def compile(%Wsdl{port_types: port_types, schemas: schemas} = wsdl) do
-    File.write!("service.ex", inspect(wsdl, pretty: true, limit: :infinity))
     schema = Enum.reduce(schemas, %Wsdl.Schema{}, &Wsdl.Schema.merge/2)
 
     Enum.reduce(port_types, [], fn port_type, acc ->
@@ -40,7 +39,6 @@ defmodule Lyex.Wsdl.Compiler do
 
     operation_binding = operation |> Resolver.resolve_operation_binding(wsdl, schema)
     request_template = Soap.generate_request_template(wsdl, input, operation_binding)
-    function_name |> IO.inspect()
 
     quote location: :keep, generated: true do
       def unquote(function_name)(unquote(input_type)) do
@@ -59,7 +57,9 @@ defmodule Lyex.Wsdl.Compiler do
           {"User-Agent", "Lyex/0.1.0"}
         ]
 
-        HTTPoison.post(binding.action, envelope)
+        with {:ok, %{body: body}} <- HTTPoison.post(binding.action, envelope) do
+          :erlsom.simple_form(body)
+        end
       end
     end
   end
