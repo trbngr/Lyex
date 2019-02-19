@@ -1,5 +1,5 @@
 defmodule Lyex.Wsdl.Service do
-  defstruct name: nil, ports: %{}
+  defstruct name: nil, ports: []
 
   defmodule Port do
     defstruct name: nil, binding: nil, address: nil
@@ -39,14 +39,13 @@ defmodule Lyex.Wsdl.Service do
 
   def exit(endElement(name: 'port'), state) do
     %{stack: [port, service | rest]} = state
-    ports = Map.put_new(service.ports, port.name, port)
-    service = %{service | ports: ports}
+    service = %{service | ports: [port | service.ports]}
     %{state | stack: [service | rest]}
   end
 
   def exit(endElement(name: 'service'), state) do
     %{stack: [service, wsdl | rest]} = state
-    wsdl = %{wsdl | service: Map.put(%{}, service.name, service)}
+    wsdl = %{wsdl | service: service}
 
     %{state | stack: [wsdl | rest]}
     |> exit_context()

@@ -5,11 +5,11 @@ defmodule Lyex.Wsdl do
             target_namespace: "",
             namespaces: %{},
             documentation: nil,
-            schemas: %{},
-            port_types: %{},
-            bindings: %{},
+            schemas: [],
+            port_types: [],
+            bindings: [],
             service: %{},
-            messages: %{}
+            messages: []
 
   defimpl String.Chars do
     require Logger
@@ -44,11 +44,11 @@ defmodule Lyex.Wsdl do
       | target_namespace: choose_target_namespace(a, b),
         files_read: b.files_read ++ a.files_read,
         service: b.service |> Map.merge(a.service),
-        schemas: b.schemas |> Map.merge(a.schemas),
-        bindings: b.bindings |> Map.merge(a.bindings),
-        messages: b.messages |> Map.merge(a.messages),
+        schemas: b.schemas ++ a.schemas,
+        bindings: b.bindings ++ a.bindings,
+        messages: b.messages ++ a.messages,
         namespaces: b.namespaces |> Map.merge(a.namespaces),
-        port_types: b.port_types |> Map.merge(a.port_types)
+        port_types: b.port_types ++ a.port_types
     }
   end
 

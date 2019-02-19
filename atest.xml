@@ -1,0 +1,9 @@
+<soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
+    <soap:Body>
+        <lyex:GetCache xmlns:lyex='http://vinsearch.eurotaxglass.com/vin-intl'>
+            <lyex:ServiceId>99</lyex:ServiceId>
+            <lyex:ServiceId>99</lyex:ServiceId>
+            <lyex:ServiceCode></lyex:ServiceCode>
+        </lyex:GetCache>
+    </soap:Body>
+</soap:Envelope>

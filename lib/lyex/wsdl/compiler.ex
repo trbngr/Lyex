@@ -1,45 +1,79 @@
 defmodule Lyex.Wsdl.Compiler do
   alias Lyex.Wsdl
+  alias Lyex.Wsdl.Compiler.{Resolver, Soap, Structures}
+
+  defmodule Error do
+    defexception [:message]
+  end
 
   def compile(%Wsdl{port_types: port_types, schemas: schemas} = wsdl) do
+    File.write!("service.ex", inspect(wsdl, pretty: true, limit: :infinity))
     schema = Enum.reduce(schemas, %Wsdl.Schema{}, &Wsdl.Schema.merge/2)
-
-    port_types |> IO.inspect()
 
     Enum.reduce(port_types, [], fn port_type, acc ->
       Enum.reduce(port_type.operations, acc, fn operation, acc ->
-        %{name: name, input: input, output: output} =
-          generate_messages(operation, wsdl, schema)
-          |> IO.inspect()
-
-        acc
+        [generate_operation(operation, wsdl, schema) | acc]
       end)
     end)
   end
 
-  defp generate_messages(
+  defp generate_operation(
          %Wsdl.PortType.Operation{} = operation,
-         %Wsdl{} = wsdl,
+         %Wsdl{service: service} = wsdl,
          %Wsdl.Schema{} = schema
        ) do
-    %{name: name, input: input, output: output} = operation
-    input = find_message(input, wsdl, schema)
-    output = find_message(output, wsdl, schema)
-    %{name: name, input: input, output: output}
+    operation_name = operation.name
+    input = operation.input |> Resolver.resolve_message(wsdl, schema)
+    output = operation.output |> Resolver.resolve_message(wsdl, schema)
+
+    service_name = service.name |> Macro.camelize() |> String.to_atom()
+
+    Structures.generate_structure(service_name, operation_name <> "Input", input)
+    Structures.generate_structure(service_name, operation_name <> "Output", output)
+
+    function_name =
+      to_string(operation_name)
+      |> Macro.underscore()
+      |> String.to_atom()
+
+    input_type = generate_input_parameter(service_name, operation_name <> "Input")
+
+    operation_binding = operation |> Resolver.resolve_operation_binding(wsdl, schema)
+    request_template = Soap.generate_request_template(wsdl, input, operation_binding)
+    function_name |> IO.inspect()
+
+    quote location: :keep, generated: true do
+      def unquote(function_name)(unquote(input_type)) do
+        input = Keyword.get(binding(), :input)
+
+        envelope =
+          EEx.eval_string(unquote(request_template),
+            assigns: [input: input]
+          )
+
+        binding = unquote(Macro.escape(operation_binding))
+
+        headers = [
+          {"Content-Type", "text/xml; encoding=UTF-8"},
+          {"SOAPAction", binding.action},
+          {"User-Agent", "Lyex/0.1.0"}
+        ]
+
+        HTTPoison.post(binding.action, envelope)
+      end
+    end
   end
 
-  defp find_message(type, %{messages: messages}, schema) do
-    [_, type] = split_qname(type)
-
-    Enum.find(messages, fn message -> message.name == type end)
-    |> find_element(schema)
+  defp generate_input_parameter(service_name, input_name) do
+    # I'm not this smart. This was generated in iex
+    {:=, [],
+     [
+       {:%, [],
+        [
+          {:__aliases__, [alias: false], [service_name, String.to_atom(input_name)]},
+          {:%{}, [], []}
+        ]},
+       Macro.var(:input, nil)
+     ]}
   end
-
-  defp find_element({_, %Wsdl.Message{part: %{element: element}}} = m, schema) do
-    m |> IO.inspect()
-    [_, element] = split_qname(element)
-    Enum.find(schema.elements, fn {name, _} -> element == name end)
-  end
-
-  defp split_qname(qname), do: qname |> String.split(":")
 end

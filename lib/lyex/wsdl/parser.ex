@@ -17,7 +17,7 @@ defmodule Lyex.Wsdl.Parser do
 
     wsdl = Enum.reduce(imports, wsdl, fn imported, acc -> acc |> Wsdl.merge(imported) end)
 
-    wsdl
+    %{wsdl | service: %{wsdl.service | name: spec.service_name}}
   end
 
   defp read(xml, state) do
@@ -51,7 +51,7 @@ defmodule Lyex.Wsdl.Parser do
     Lyex.Wsdl.PortType.enter(xml, state)
   end
 
-  def enter(startElement(prefix: 'wsdl', name: 'binding') = xml, state) do
+  def enter(startElement(name: 'binding') = xml, state) do
     Lyex.Wsdl.Binding.enter(xml, state)
   end
 

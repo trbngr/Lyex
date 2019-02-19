@@ -38,7 +38,7 @@ defmodule Lyex.Wsdl.Schema.SimpleType do
 
   def exit(endElement(name: 'simpleType'), state) do
     %{stack: [type, schema | rest]} = state
-    schema = %{schema | simple_types: Map.put(schema.simple_types, type.name, type)}
+    schema = %{schema | simple_types: [type | schema.simple_types]}
 
     %{state | stack: [schema | rest]}
     |> exit_context()

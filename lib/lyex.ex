@@ -18,8 +18,7 @@ defmodule Lyex do
     spec
     |> SourceFile.resolve_file()
     |> Parser.parse()
-
-    # |> Compiler.compile()
+    |> Compiler.compile()
   end
 
   def init(_), do: usage()

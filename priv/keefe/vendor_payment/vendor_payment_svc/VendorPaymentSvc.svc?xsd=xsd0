@@ -1,1 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?><xs:schema elementFormDefault="qualified" targetNamespace="http://www.keefecommissary.net/VendorPaymentService/v0101" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.keefecommissary.net/VendorPaymentService/v0101"><xs:import schemaLocation="https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/><xs:element name="RegisterDepositor"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="input" nillable="true" type="q1:RegisterDepositorInput" xmlns:q1="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="RegisterDepositorResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="RegisterDepositorResult" nillable="true" type="q2:RegisterDepositorOutput" xmlns:q2="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="PreValidateDeposit"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="input" nillable="true" type="q3:PreValidateDepositInput" xmlns:q3="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="PreValidateDepositResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="PreValidateDepositResult" nillable="true" type="q4:PreValidateDepositOutput" xmlns:q4="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="PostDeposit"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="input" nillable="true" type="q5:PostDepositInput" xmlns:q5="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="PostDepositResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="PostDepositResult" nillable="true" type="q6:PostDepositOutput" xmlns:q6="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="LookupRecipient"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="input" nillable="true" type="q7:LookupRecipientInput" xmlns:q7="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="LookupRecipientResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="LookupRecipientResult" nillable="true" type="q8:LookupRecipientOutput" xmlns:q8="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="VoidDeposit"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="input" nillable="true" type="q9:VoidDepositInput" xmlns:q9="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element><xs:element name="VoidDepositResponse"><xs:complexType><xs:sequence><xs:element minOccurs="0" name="VoidDepositResult" nillable="true" type="q10:VoidDepositOutput" xmlns:q10="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/></xs:sequence></xs:complexType></xs:element></xs:schema>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.keefecommissary.net/VendorPaymentService/v0101" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:tns="http://www.keefecommissary.net/VendorPaymentService/v0101">
+    <xs:import schemaLocation="https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+    <xs:element name="RegisterDepositor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="input" nillable="true" type="q1:RegisterDepositorInput" 
+                    xmlns:q1="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RegisterDepositorResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="RegisterDepositorResult" nillable="true" type="q2:RegisterDepositorOutput" 
+                    xmlns:q2="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PreValidateDeposit">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="input" nillable="true" type="q3:PreValidateDepositInput" 
+                    xmlns:q3="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PreValidateDepositResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="PreValidateDepositResult" nillable="true" type="q4:PreValidateDepositOutput" 
+                    xmlns:q4="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostDeposit">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="input" nillable="true" type="q5:PostDepositInput" 
+                    xmlns:q5="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostDepositResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="PostDepositResult" nillable="true" type="q6:PostDepositOutput" 
+                    xmlns:q6="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="LookupRecipient">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="input" nillable="true" type="q7:LookupRecipientInput" 
+                    xmlns:q7="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="LookupRecipientResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="LookupRecipientResult" nillable="true" type="q8:LookupRecipientOutput" 
+                    xmlns:q8="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VoidDeposit">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="input" nillable="true" type="q9:VoidDepositInput" 
+                    xmlns:q9="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VoidDepositResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="VoidDepositResult" nillable="true" type="q10:VoidDepositOutput" 
+                    xmlns:q10="http://schemas.datacontract.org/2004/07/PaymentServiceEngine"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

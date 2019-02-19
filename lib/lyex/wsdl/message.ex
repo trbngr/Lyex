@@ -31,7 +31,7 @@ defmodule Lyex.Wsdl.Message do
 
   def exit(endElement(name: 'message'), state) do
     %{stack: [message, %Wsdl{} = wsdl | rest]} = state
-    wsdl = %{wsdl | messages: Map.put_new(wsdl.messages, message.name, message)}
+    wsdl = %{wsdl | messages: [message | wsdl.messages]}
 
     %{state | stack: [wsdl | rest]}
     |> exit_context()

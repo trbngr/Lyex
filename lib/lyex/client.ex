@@ -8,10 +8,9 @@ defmodule Lyex.Client do
       cache_dir: opts[:cache_dir] || "./priv"
     }
 
-    definitions = Lyex.init(service)
-    operations = Lyex.Parser.Operations.read_operations(definitions)
+    Lyex.init(service)
 
-    Generation.generate_types(service.service_name, operations)
-    Generation.generate_services(service.service_name, operations)
+    # Generation.generate_types(service.service_name, operations)
+    # Generation.generate_services(service.service_name, operations)
   end
 end

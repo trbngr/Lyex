@@ -1,5 +1,5 @@
 defmodule Lyex.Wsdl.PortType do
-  defstruct name: nil, operations: %{}
+  defstruct name: nil, operations: []
 
   defmodule Operation do
     defstruct name: nil, documentation: nil, input: nil, output: nil
@@ -8,7 +8,7 @@ defmodule Lyex.Wsdl.PortType do
   defimpl String.Chars do
     def to_string(%{name: name, operations: operations}) do
       ops =
-        Enum.map(operations, fn {k, _v} -> k end)
+        Enum.map(operations, fn op -> op.name end)
         |> Enum.join("\n\t\t\t")
 
       ~s(#{name} [#{length(Map.keys(operations))} operations]
@@ -67,10 +67,7 @@ defmodule Lyex.Wsdl.PortType do
   def exit(endElement(name: 'operation'), state) do
     %{stack: [operation, port_type | rest]} = state
 
-    port_type = %{
-      port_type
-      | operations: Map.put(port_type.operations, operation.name, operation)
-    }
+    port_type = %{port_type | operations: [operation | port_type.operations]}
 
     %{state | stack: [port_type | rest]}
   end
@@ -78,7 +75,7 @@ defmodule Lyex.Wsdl.PortType do
   def exit(endElement(name: 'portType'), state) do
     %{stack: [port_type, wsdl | rest]} = state
 
-    wsdl = %{wsdl | port_types: Map.put_new(wsdl.port_types, port_type.name, port_type)}
+    wsdl = %{wsdl | port_types: [port_type | wsdl.port_types]}
 
     %{state | stack: [wsdl | rest]}
     |> exit_context()

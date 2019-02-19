@@ -44,12 +44,8 @@ defmodule Lyex.Wsdl.Schema.ComplexType do
 
     parent =
       case parent do
-        %Schema{} ->
-          complex_types = Map.put(parent.complex_types, type.name, type)
-          %{parent | complex_types: complex_types}
-
-        %Schema.Element{} ->
-          %{parent | type: type}
+        %Schema{} -> %{parent | complex_types: [type | parent.complex_types]}
+        %Schema.Element{} -> %{parent | type: type}
       end
 
     %{state | stack: [parent | rest]}

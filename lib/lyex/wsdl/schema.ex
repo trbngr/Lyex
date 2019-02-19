@@ -1,8 +1,8 @@
 defmodule Lyex.Wsdl.Schema do
-  defstruct complex_types: %{},
+  defstruct complex_types: [],
             target_namespace: nil,
-            simple_types: %{},
-            elements: %{}
+            simple_types: [],
+            elements: []
 
   alias Lyex.Wsdl
   use Lyex.Wsdl.Parser.Context, debug: false
@@ -22,9 +22,9 @@ defmodule Lyex.Wsdl.Schema do
   def merge(%Wsdl.Schema{} = a, %Wsdl.Schema{} = b) do
     %{
       a
-      | complex_types: Map.merge(a.complex_types, b.complex_types),
-        elements: Map.merge(a.elements, b.elements),
-        simple_types: Map.merge(a.simple_types, b.simple_types)
+      | complex_types: a.complex_types ++ b.complex_types,
+        elements: a.elements ++ b.elements,
+        simple_types: a.simple_types ++ b.simple_types
     }
   end
 
@@ -61,8 +61,8 @@ defmodule Lyex.Wsdl.Schema do
         nil ->
           %{state | stack: [wsdl | rest]}
 
-        ns ->
-          wsdl = %{wsdl | schemas: Map.put(wsdl.schemas, ns, schema)}
+        _ ->
+          wsdl = %{wsdl | schemas: [schema | wsdl.schemas]}
           %{state | stack: [wsdl | rest]}
       end
 
