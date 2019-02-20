@@ -33,17 +33,19 @@ defmodule Lyex.Wsdl.Compiler do
 
     quote location: :keep, generated: true do
       def unquote(function_name)(unquote(input_type)) do
+        import Lyex.Wsdl.Output, only: [read: 3]
         input = Keyword.get(binding(), :input)
+
+        address = unquote(address)
+        headers = unquote(request_headers)
 
         envelope =
           EEx.eval_string(unquote(request_template),
             assigns: [input: input]
           )
 
-        headers = unquote(request_headers)
-
-        with {:ok, %{body: body}} <- HTTPoison.post(unquote(address), envelope, headers) do
-          Wsdl.Ouput.read(
+        with {:ok, %{body: body}} <- HTTPoison.post(address, envelope, headers) do
+          read(
             body,
             unquote(output_type),
             unquote(output_struct)
