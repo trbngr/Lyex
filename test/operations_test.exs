@@ -7,17 +7,17 @@ defmodule OperationsTest do
   #   cache_dir: "./test/wsdls"
   # }
 
-  @service %Lyex{
-    service_name: "WeatherService",
-    wsdl: "https://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php?wsdl",
-    cache_dir: "./test/wsdls"
-  }
-
   # @service %Lyex{
-  #   service_name: "keefe",
-  #   wsdl: "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?wsdl",
+  #   service_name: "WeatherService",
+  #   wsdl: "https://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php?wsdl",
   #   cache_dir: "./test/wsdls"
   # }
+
+  @service %Lyex{
+    service_name: "keefe",
+    wsdl: "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?wsdl",
+    cache_dir: "./test/wsdls"
+  }
 
   # @service %Lyex{
   #   service_name: "keefe_single",

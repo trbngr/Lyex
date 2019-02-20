@@ -10,7 +10,7 @@ defmodule Lyex.Wsdl.Schema do
   defimpl String.Chars do
     def to_string(schema) do
       %{target_namespace: ns, complex_types: cts, simple_types: sts, elements: els} = schema
-      count = fn map -> length(Map.keys(map)) end
+      count = fn ts -> length(ts) end
 
       ~s(#{ns}
         \t\t#{count.(cts)} complex types,

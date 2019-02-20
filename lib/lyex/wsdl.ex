@@ -8,25 +8,29 @@ defmodule Lyex.Wsdl do
             schemas: [],
             port_types: [],
             bindings: [],
-            service: %{},
+            service: %Wsdl.Service{},
             messages: []
 
   defimpl String.Chars do
     require Logger
 
     def to_string(wsdl) do
-      add = fn message, label, map ->
+      add = fn message, label, prop ->
         cond do
-          length(Map.keys(map)) > 0 ->
-            value = Enum.map(map, fn {_, v} -> ~s(\n\t\t\t#{Kernel.to_string(v)}) end)
+          is_list(prop) and length(prop) > 0 ->
+            value = Enum.map(prop, fn v -> ~s(\n\t\t\t#{Kernel.to_string(v)}) end)
             message <> "\n\t\t#{label} #{value}"
+
+          # length(Map.keys(prop)) > 0 ->
+          #   value = Enum.map(prop, fn {_, v} -> ~s(\n\t\t\t#{Kernel.to_string(v)}) end)
+          #   message <> "\n\t\t#{label} #{value}"
 
           true ->
             message
         end
       end
 
-      "files\n\t\t\t#{Enum.join(wsdl.files, "\n\t\t\t")}"
+      "files\n\t\t\t#{Enum.join(wsdl.files_read, "\n\t\t\t")}"
       |> add.("service", wsdl.service)
       |> add.("messages", wsdl.messages)
       |> add.("port_types", wsdl.port_types)

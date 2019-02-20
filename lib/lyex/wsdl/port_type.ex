@@ -21,7 +21,7 @@ defmodule Lyex.Wsdl.PortType do
         Enum.map(operations, fn op -> op.name end)
         |> Enum.join("\n\t\t\t")
 
-      ~s(#{name} [#{length(Map.keys(operations))} operations]
+      ~s(#{name} [#{length(operations)} operations]
       \t\t\t#{ops}
       )
     end

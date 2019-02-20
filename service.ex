@@ -1,271 +1,211 @@
 %Lyex.Wsdl{
   bindings: [
     %Lyex.Wsdl.Binding{
-      name: "ndfdXMLBinding",
+      name: "BasicHttpBinding_IVendorPaymentSvc",
       operations: [
         %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgenByDayLatLonList",
-          input: %{},
-          name: "NDFDgenByDayLatLonList",
-          output: %{}
+          action: "http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/VoidDeposit",
+          input: %{namespace: nil},
+          name: "VoidDeposit",
+          output: %{namespace: nil}
         },
         %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgenByDay",
-          input: %{},
-          name: "NDFDgenByDay",
-          output: %{}
+          action: "http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/LookupRecipient",
+          input: %{namespace: nil},
+          name: "LookupRecipient",
+          output: %{namespace: nil}
         },
         %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#GmlTimeSeries",
-          input: %{},
-          name: "GmlTimeSeries",
-          output: %{}
+          action: "http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/PostDeposit",
+          input: %{namespace: nil},
+          name: "PostDeposit",
+          output: %{namespace: nil}
         },
         %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#GmlLatLonList",
-          input: %{},
-          name: "GmlLatLonList",
-          output: %{}
+          action: "http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/PreValidateDeposit",
+          input: %{namespace: nil},
+          name: "PreValidateDeposit",
+          output: %{namespace: nil}
         },
         %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#CornerPoints",
-          input: %{},
-          name: "CornerPoints",
-          output: %{}
-        },
-        %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#LatLonListSquare",
-          input: %{},
-          name: "LatLonListSquare",
-          output: %{}
-        },
-        %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#LatLonListCityNames",
-          input: %{},
-          name: "LatLonListCityNames",
-          output: %{}
-        },
-        %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#LatLonListZipCode",
-          input: %{},
-          name: "LatLonListZipCode",
-          output: %{}
-        },
-        %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#LatLonListLine",
-          input: %{},
-          name: "LatLonListLine",
-          output: %{}
-        },
-        %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#LatLonListSubgrid",
-          input: %{},
-          name: "LatLonListSubgrid",
-          output: %{}
-        },
-        %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgenLatLonList",
-          input: %{},
-          name: "NDFDgenLatLonList",
-          output: %{}
-        },
-        %Lyex.Wsdl.Binding.Operation{
-          action: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgen",
-          input: %{},
-          name: "NDFDgen",
-          output: %{}
+          action: "http://www.keefecommissary.net/VendorPaymentService/v0101/IVendorPaymentSvc/RegisterDepositor",
+          input: %{namespace: nil},
+          name: "RegisterDepositor",
+          output: %{namespace: nil}
         }
       ],
-      style: "rpc",
+      style: "document",
       transport: "http://schemas.xmlsoap.org/soap/http",
-      type: "tns:ndfdXMLPortType"
+      type: "i0:IVendorPaymentSvc"
     }
   ],
   documentation: nil,
-  files_read: ["https://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php?wsdl"],
+  files_read: ["https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?xsd=xsd2",
+   "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?xsd=xsd0",
+   "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?xsd=xsd1",
+   "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?xsd=xsd2",
+   "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?wsdl=wsdl0",
+   "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc?wsdl"],
   messages: [
     %Lyex.Wsdl.Message{
-      name: "NDFDgenByDayLatLonListResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "dwmlByDayOut"}
+      name: "IVendorPaymentSvc_VoidDeposit_OutputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:VoidDepositResponse",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "NDFDgenByDayLatLonListRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "format"}
+      name: "IVendorPaymentSvc_VoidDeposit_InputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:VoidDeposit",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "NDFDgenByDayResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "dwmlByDayOut"}
+      name: "IVendorPaymentSvc_LookupRecipient_OutputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:LookupRecipientResponse",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "NDFDgenByDayRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "format"}
+      name: "IVendorPaymentSvc_LookupRecipient_InputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:LookupRecipient",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "GmlTimeSeriesResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "dwGmlOut"}
+      name: "IVendorPaymentSvc_PostDeposit_OutputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:PostDepositResponse",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "GmlTimeSeriesRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "propertyName"}
+      name: "IVendorPaymentSvc_PostDeposit_InputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:PostDeposit",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "GmlLatLonListResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "dwGmlOut"}
+      name: "IVendorPaymentSvc_PreValidateDeposit_OutputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:PreValidateDepositResponse",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "GmlLatLonListRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "weatherParameters"}
+      name: "IVendorPaymentSvc_PreValidateDeposit_InputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:PreValidateDeposit",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "CornerPointsResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "listLatLonOut"}
+      name: "IVendorPaymentSvc_RegisterDepositor_OutputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:RegisterDepositorResponse",
+        name: "parameters"
+      }
     },
     %Lyex.Wsdl.Message{
-      name: "CornerPointsRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "sector"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListSquareResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "listLatLonOut"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListSquareRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "resolution"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListCityNamesResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "listLatLonOut"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListCityNamesRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "displayLevel"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListZipCodeResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "listLatLonOut"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListZipCodeRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "zipCodeList"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListLineResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "listLatLonOut"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListLineRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "endPoint2Lon"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListSubgridResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "listLatLonOut"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "LatLonListSubgridRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "resolution"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "NDFDgenLatLonListResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "dwmlOut"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "NDFDgenLatLonListRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "weatherParameters"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "NDFDgenResponse",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "dwmlOut"}
-    },
-    %Lyex.Wsdl.Message{
-      name: "NDFDgenRequest",
-      part: %Lyex.Wsdl.Message.Part{element: nil, name: "weatherParameters"}
+      name: "IVendorPaymentSvc_RegisterDepositor_InputMessage",
+      part: %Lyex.Wsdl.Message.Part{
+        element: "tns:RegisterDepositor",
+        name: "parameters"
+      }
     }
   ],
   namespaces: %{
-    "" => "http://schemas.xmlsoap.org/wsdl/",
-    "SOAP-ENC" => "http://schemas.xmlsoap.org/soap/encoding/",
-    "SOAP-ENV" => "http://schemas.xmlsoap.org/soap/envelope/",
+    "i0" => "http://www.keefecommissary.net/VendorPaymentService/v0101",
+    "msc" => "http://schemas.microsoft.com/ws/2005/12/wsdl/contract",
     "soap" => "http://schemas.xmlsoap.org/wsdl/soap/",
-    "tns" => "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl",
+    "soap12" => "http://schemas.xmlsoap.org/wsdl/soap12/",
+    "soapenc" => "http://schemas.xmlsoap.org/soap/encoding/",
+    "sp" => "http://schemas.xmlsoap.org/ws/2005/07/securitypolicy",
+    "tns" => "http://tempuri.org/",
+    "wsa" => "http://schemas.xmlsoap.org/ws/2004/08/addressing",
+    "wsa10" => "http://www.w3.org/2005/08/addressing",
+    "wsam" => "http://www.w3.org/2007/05/addressing/metadata",
+    "wsap" => "http://schemas.xmlsoap.org/ws/2004/08/addressing/policy",
+    "wsaw" => "http://www.w3.org/2006/05/addressing/wsdl",
     "wsdl" => "http://schemas.xmlsoap.org/wsdl/",
-    "xsd" => "http://www.w3.org/2001/XMLSchema",
-    "xsi" => "http://www.w3.org/2001/XMLSchema-instance"
+    "wsp" => "http://schemas.xmlsoap.org/ws/2004/09/policy",
+    "wsu" => "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd",
+    "wsx" => "http://schemas.xmlsoap.org/ws/2004/09/mex",
+    "xs" => "http://www.w3.org/2001/XMLSchema",
+    "xsd" => "http://www.w3.org/2001/XMLSchema"
   },
   port_types: [
     %Lyex.Wsdl.PortType{
-      name: "ndfdXMLPortType",
+      name: "IVendorPaymentSvc",
       operations: [
         %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns National Weather Service digital weather forecast data.  Supports latitudes and longitudes for the Continental United States, Hawaii, Guam, and Puerto Rico only.  The latitude and longitude are delimited by a comma and multiple pairs are delimited by a space (i.e. 30.00,-77.00 40.00,-90.00). Allowable values for the input variable "format" are "24 hourly" and "12 hourly".  The input variable "startDate" is a date string representing the first day (Local) of data to be returned. The input variable "numDays" is the integer number of days for which the user wants data. Allowable values for the input variable "Unit" are "e" for U.S. Standare/English units and "m" for Metric units.',
-          input: "tns:NDFDgenByDayLatLonListRequest",
-          name: "NDFDgenByDayLatLonList",
-          output: "tns:NDFDgenByDayLatLonListResponse"
+          action: nil,
+          documentation: nil,
+          input: "tns:IVendorPaymentSvc_VoidDeposit_InputMessage",
+          input_namespace: nil,
+          input_type: nil,
+          name: "VoidDeposit",
+          output: "tns:IVendorPaymentSvc_VoidDeposit_OutputMessage",
+          output_namespace: nil,
+          output_type: nil,
+          request_headers: [],
+          request_template: nil
         },
         %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns National Weather Service digital weather forecast data.  Supports latitudes and longitudes for the Continental United States, Hawaii, Guam, and Puerto Rico only.  Allowable values for the input variable "format" are "24 hourly" and "12 hourly".  The input variable "startDate" is a date string representing the first day (Local) of data to be returned. The input variable "numDays" is the integer number of days for which the user wants data. Allowable values for the input variable "Unit" are "e" for U.S. Standare/English units and "m" for Metric units.',
-          input: "tns:NDFDgenByDayRequest",
-          name: "NDFDgenByDay",
-          output: "tns:NDFDgenByDayResponse"
+          action: nil,
+          documentation: nil,
+          input: "tns:IVendorPaymentSvc_LookupRecipient_InputMessage",
+          input_namespace: nil,
+          input_type: nil,
+          name: "LookupRecipient",
+          output: "tns:IVendorPaymentSvc_LookupRecipient_OutputMessage",
+          output_namespace: nil,
+          output_type: nil,
+          request_headers: [],
+          request_template: nil
         },
         %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns National Weather Service digital weather forecast data encoded in GML.  Supports latitudes and longitudes for the Continental United States, Alaska, Hawaii, Guam, and Puerto Rico only.  The latitude and longitude are delimited by a comma and multiple pairs are delimited by a space (i.e. 30.00,-77.00 40.00,-90.00). Allowable values for the input variable "featureType" are "Forecast_Gml2Point", "Forecast_GmlObs", "NdfdMultiPointCoverage", "Ndfd_KmlPoint", and "Forecast_GmlsfPoint".  For all feature types a start and end time (UTC) is required to indicate when data is requested.  a comparison type (IsEqual, Between, GreaterThan, GreaterThan, GreaterThanEqualTo, LessThan, and  LessThanEqualTo). The input variable "propertyName" contains a comma delimited string of NDFD element to indicate which weather parameters are being requested.',
-          input: "tns:GmlTimeSeriesRequest",
-          name: "GmlTimeSeries",
-          output: "tns:GmlTimeSeriesResponse"
+          action: nil,
+          documentation: nil,
+          input: "tns:IVendorPaymentSvc_PostDeposit_InputMessage",
+          input_namespace: nil,
+          input_type: nil,
+          name: "PostDeposit",
+          output: "tns:IVendorPaymentSvc_PostDeposit_OutputMessage",
+          output_namespace: nil,
+          output_type: nil,
+          request_headers: [],
+          request_template: nil
         },
         %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns National Weather Service digital weather forecast data encoded in GML.  Supports latitudes and longitudes for the Continental United States, Alaska, Hawaii, Guam, and Puerto Rico only.  The latitude and longitude are delimited by a comma and multiple pairs are delimited by a space (i.e. 30.00,-77.00 40.00,-90.00). Allowable values for the input variable "featureType" are "Forecast_Gml2Point", "Forecast_GmlObs", "NdfdMultiPointCoverage", "Ndfd_KmlPoint", and "Forecast_GmlsfPoint".  For all feature types a time (UTC) is required to indicate when data is requested.  The input variable "weatherParameters" has array elements set to "true" to indicate which weather parameters are being requested.  If an array element is set to "false", data for that weather parameter are not to be returned.',
-          input: "tns:GmlLatLonListRequest",
-          name: "GmlLatLonList",
-          output: "tns:GmlLatLonListResponse"
+          action: nil,
+          documentation: nil,
+          input: "tns:IVendorPaymentSvc_PreValidateDeposit_InputMessage",
+          input_namespace: nil,
+          input_type: nil,
+          name: "PreValidateDeposit",
+          output: "tns:IVendorPaymentSvc_PreValidateDeposit_OutputMessage",
+          output_namespace: nil,
+          output_type: nil,
+          request_headers: [],
+          request_template: nil
         },
         %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns latitude and longitude pairs of the four corners of an NDFD grid.  Provides points in a format suitable for use in calling multi-point functions NDFDgenLatLonList and NDFDgenByDayLatLonList.  Supports latitudes and longitudes for the Continental United States, Hawaii, Guam, and Puerto Rico only.  Also provides a minimum resolution for requesting the grid.',
-          input: "tns:CornerPointsRequest",
-          name: "CornerPoints",
-          output: "tns:CornerPointsResponse"
-        },
-        %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns a list of latitude and longitude pairs in a rectangle defined by a central point and distance from that point in the latitudinal and longitudinal directions.  Supports latitudes and longitudes for the Continental United States, Alaska, Hawaii, Guam, and Puerto Rico only.  Provides points in a format suitable for use in calling multi-point functions NDFDgenLatLonList and NDFDgenByDayLatLonList.',
-          input: "tns:LatLonListSquareRequest",
-          name: "LatLonListSquare",
-          output: "tns:LatLonListSquareResponse"
-        },
-        %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns the latitude and longitude pairs corresponding to a predefined list of US cities.  Provides points in a format suitable for use in calling multi-point functions NDFDgenLatLonList and NDFDgenByDayLatLonList.  The response also includes a list of city names with the order of the names matching the order of the corresponding point.',
-          input: "tns:LatLonListCityNamesRequest",
-          name: "LatLonListCityNames",
-          output: "tns:LatLonListCityNamesResponse"
-        },
-        %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns the latitude and longitude pairs corresponding to a list of one or more zip codes.  Supports zip codes for the Continental United States, Alaska, Hawaii, and Puerto Rico only. Provides points in a format suitable for use in calling multi-point functions NDFDgenLatLonList and NDFDgenByDayLatLonList.',
-          input: "tns:LatLonListZipCodeRequest",
-          name: "LatLonListZipCode",
-          output: "tns:LatLonListZipCodeResponse"
-        },
-        %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns a list of latitude and longitude pairs along a line defined by two points.  Supports latitudes and longitudes for the Continental United States, Alaska, Hawaii, Guam, and Puerto Rico only.  Provides points in a format suitable for use in calling multi-point functions NDFDgenLatLonList and NDFDgenByDayLatLonList.',
-          input: "tns:LatLonListLineRequest",
-          name: "LatLonListLine",
-          output: "tns:LatLonListLineResponse"
-        },
-        %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns a list of Latitude and longitude pairs for a rectangle defined by its lower left and upper right points.  Provides points in a format suitable for use in calling multi-point functions NDFDgenLatLonList and NDFDgenByDayLatLonList.  Supports latitudes and longitudes for the Continental United States, Alaska, Hawaii, Guam, and Puerto Rico.',
-          input: "tns:LatLonListSubgridRequest",
-          name: "LatLonListSubgrid",
-          output: "tns:LatLonListSubgridResponse"
-        },
-        %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns National Weather Service digital weather forecast data.  Supports latitudes and longitudes for the Continental United States, Alaska, Hawaii, Guam, and Puerto Rico only.  The latitude and longitude are delimited by a comma and multiple pairs are delimited by a space (i.e. 30.00,-77.00 40.00,-90.00). Allowable values for the input variable "product" are "time-series" and "glance". Allowable values for the input variable "Unit" are "e" for U.S. Standare/English units and "m" for Metric units. For both products, a start and end time (Local) are required. For both products, a start and end time (Local) are required.  For the time-series product, the input variable "weatherParameters" has array elements set to "true" to indicate which weather parameters are being requested.  If an array element is set to "false", data for that weather parameter are not to be returned.',
-          input: "tns:NDFDgenLatLonListRequest",
-          name: "NDFDgenLatLonList",
-          output: "tns:NDFDgenLatLonListResponse"
-        },
-        %Lyex.Wsdl.PortType.Operation{
-          documentation: 'Returns National Weather Service digital weather forecast data.  Supports latitudes and longitudes for the Continental United States, Alaska, Hawaii, Guam, and Puerto Rico only. Allowable values for the input variable "product" are "time-series" and "glance". Allowable values for the input variable "Unit" are "e" for U.S. Standare/English units and "m" for Metric units. For both products, a start and end time (Local) are required.  For the time-series product, the input variable "weatherParameters" has array elements set to "true" to indicate which weather parameters are being requested.  If an array element is set to "false", data for that weather parameter are not to be returned.',
-          input: "tns:NDFDgenRequest",
-          name: "NDFDgen",
-          output: "tns:NDFDgenResponse"
+          action: nil,
+          documentation: nil,
+          input: "tns:IVendorPaymentSvc_RegisterDepositor_InputMessage",
+          input_namespace: nil,
+          input_type: nil,
+          name: "RegisterDepositor",
+          output: "tns:IVendorPaymentSvc_RegisterDepositor_OutputMessage",
+          output_namespace: nil,
+          output_type: nil,
+          request_headers: [],
+          request_template: nil
         }
       ]
     }
@@ -281,550 +221,2593 @@
               documentation: nil,
               fixed: nil,
               maxOccurs: nil,
-              minOccurs: nil,
-              name: "iceaccum",
-              nillable: false,
-              type: "xsd:boolean"
+              minOccurs: 0,
+              name: "VendorTransId",
+              nillable: true,
+              type: "xs:string"
             },
             %Lyex.Wsdl.Schema.Element{
               default: nil,
               documentation: nil,
               fixed: nil,
               maxOccurs: nil,
-              minOccurs: nil,
-              name: "wgust",
-              nillable: false,
-              type: "xsd:boolean"
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
             },
             %Lyex.Wsdl.Schema.Element{
               default: nil,
               documentation: nil,
               fixed: nil,
               maxOccurs: nil,
-              minOccurs: nil,
-              name: "wwa",
-              nillable: false,
-              type: "xsd:boolean"
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
             },
             %Lyex.Wsdl.Schema.Element{
               default: nil,
               documentation: nil,
               fixed: nil,
               maxOccurs: nil,
-              minOccurs: nil,
-              name: "wspd_r",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "wdir_r",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "td_r",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "temp_r",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "sky_r",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "precipa_r",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "prcpblw90d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "prcpabv90d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "prcpblw30d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "prcpabv30d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "prcpblw14d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "prcpabv14d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "tmpblw90d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "tmpabv90d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "tmpblw30d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "tmpabv30d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "tmpblw14d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "tmpabv14d",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "pxtotsvrtstm",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "ptotsvrtstm",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "pxtstmwinds",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "pxhail",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "pxtornado",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "ptstmwinds",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "phail",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "ptornado",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "conhazo",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "dryfireo",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "critfireo",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "cumw64",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "cumw50",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "cumw34",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "incw64",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "incw50",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "incw34",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "appt",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "rh",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "icons",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "waveh",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "wx",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "wdir",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "wspd",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "snow",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "sky",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "qpf",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "pop12",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "dew",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "temp",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "mint",
-              nillable: false,
-              type: "xsd:boolean"
-            },
-            %Lyex.Wsdl.Schema.Element{
-              default: nil,
-              documentation: nil,
-              fixed: nil,
-              maxOccurs: nil,
-              minOccurs: nil,
-              name: "maxt",
-              nillable: false,
-              type: "xsd:boolean"
+              minOccurs: 0,
+              name: "FacilityName",
+              nillable: true,
+              type: "xs:string"
             }
           ],
-          name: "weatherParametersType",
+          name: "VoidDepositOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "ResidentNumber",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AccountNumber",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "VoidDepositInput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "MaxDepositAmount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "LastName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FirstName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBYear",
+              nillable: false,
+              type: "xs:int"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBMonth",
+              nillable: false,
+              type: "xs:int"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBDay",
+              nillable: false,
+              type: "xs:int"
+            }
+          ],
+          name: "LookupRecipientOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "RecipientNumber",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            }
+          ],
+          name: "LookupRecipientInput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "LastName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FirstName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityName",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "PostDepositOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "SurchargeFee",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "ServiceFee",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "ResidentNumber",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "PurposeCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DepositorSSN",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DepositAmount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AmountCollected",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AccountNumber",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "PostDepositInput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "MaxDepositAmount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "LastName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FirstName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBYear",
+              nillable: false,
+              type: "xs:int"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBMonth",
+              nillable: false,
+              type: "xs:int"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBDay",
+              nillable: false,
+              type: "xs:int"
+            }
+          ],
+          name: "PreValidateDepositOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "ResidentNumber",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Amount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AccountNumber",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "PreValidateDepositInput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Text",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Code",
+              nillable: false,
+              type: "tns:ResultCode"
+            }
+          ],
+          name: "ResultInfo",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AccountNumber",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "RegisterDepositorOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "UserId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Password",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "Authentication",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Zip",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "WorkPhone",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Username",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "State",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Password",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "MiddleName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "LastName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "HomePhone",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FirstName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Email",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DepositAmount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOB",
+              nillable: false,
+              type: "xs:dateTime"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "City",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "CellPhone",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AltEmail",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Address2",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Address1",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "RegisterDepositorInput",
           restriction: nil
         }
       ],
+      elements: [
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "VoidDepositOutput",
+          nillable: true,
+          type: "tns:VoidDepositOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "VoidDepositInput",
+          nillable: true,
+          type: "tns:VoidDepositInput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "LookupRecipientOutput",
+          nillable: true,
+          type: "tns:LookupRecipientOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "LookupRecipientInput",
+          nillable: true,
+          type: "tns:LookupRecipientInput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PostDepositOutput",
+          nillable: true,
+          type: "tns:PostDepositOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PostDepositInput",
+          nillable: true,
+          type: "tns:PostDepositInput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PreValidateDepositOutput",
+          nillable: true,
+          type: "tns:PreValidateDepositOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PreValidateDepositInput",
+          nillable: true,
+          type: "tns:PreValidateDepositInput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "ResultCode",
+          nillable: true,
+          type: "tns:ResultCode"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "ResultInfo",
+          nillable: true,
+          type: "tns:ResultInfo"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "RegisterDepositorOutput",
+          nillable: true,
+          type: "tns:RegisterDepositorOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "Authentication",
+          nillable: true,
+          type: "tns:Authentication"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "RegisterDepositorInput",
+          nillable: true,
+          type: "tns:RegisterDepositorInput"
+        }
+      ],
+      simple_types: [
+        %Lyex.Wsdl.Schema.SimpleType{
+          documentation: nil,
+          name: "ResultCode",
+          restriction: %Lyex.Wsdl.Schema.Restriction{
+            base: "xs:string",
+            constraints: [
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "INVALID_DEPOSITOR"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "INVALID_RESIDENT"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "INVALID_FACILITY"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "INVALID_INPUT_VALUES"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "AUTHENTICATION_FAILED"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{value: "SYSTEM_ERROR"},
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{value: "SUCCESS"}
+            ]
+          }
+        }
+      ],
+      target_namespace: "http://schemas.datacontract.org/2004/07/PaymentServiceEngine"
+    },
+    %Lyex.Wsdl.Schema{
+      complex_types: [],
+      elements: [
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "VoidDepositResponse",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "VoidDepositResult",
+                nillable: true,
+                type: "q10:VoidDepositOutput"
+              }
+            ],
+            name: "VoidDepositResponse",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "VoidDeposit",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "input",
+                nillable: true,
+                type: "q9:VoidDepositInput"
+              }
+            ],
+            name: "VoidDeposit",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "LookupRecipientResponse",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "LookupRecipientResult",
+                nillable: true,
+                type: "q8:LookupRecipientOutput"
+              }
+            ],
+            name: "LookupRecipientResponse",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "LookupRecipient",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "input",
+                nillable: true,
+                type: "q7:LookupRecipientInput"
+              }
+            ],
+            name: "LookupRecipient",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PostDepositResponse",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "PostDepositResult",
+                nillable: true,
+                type: "q6:PostDepositOutput"
+              }
+            ],
+            name: "PostDepositResponse",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PostDeposit",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "input",
+                nillable: true,
+                type: "q5:PostDepositInput"
+              }
+            ],
+            name: "PostDeposit",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PreValidateDepositResponse",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "PreValidateDepositResult",
+                nillable: true,
+                type: "q4:PreValidateDepositOutput"
+              }
+            ],
+            name: "PreValidateDepositResponse",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PreValidateDeposit",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "input",
+                nillable: true,
+                type: "q3:PreValidateDepositInput"
+              }
+            ],
+            name: "PreValidateDeposit",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "RegisterDepositorResponse",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "RegisterDepositorResult",
+                nillable: true,
+                type: "q2:RegisterDepositorOutput"
+              }
+            ],
+            name: "RegisterDepositorResponse",
+            restriction: nil
+          }
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "RegisterDepositor",
+          nillable: false,
+          type: %Lyex.Wsdl.Schema.ComplexType{
+            documentation: nil,
+            elements: [
+              %Lyex.Wsdl.Schema.Element{
+                default: nil,
+                documentation: nil,
+                fixed: nil,
+                maxOccurs: nil,
+                minOccurs: 0,
+                name: "input",
+                nillable: true,
+                type: "q1:RegisterDepositorInput"
+              }
+            ],
+            name: "RegisterDepositor",
+            restriction: nil
+          }
+        }
+      ],
+      simple_types: [],
+      target_namespace: "http://www.keefecommissary.net/VendorPaymentService/v0101"
+    },
+    %Lyex.Wsdl.Schema{
+      complex_types: [],
+      elements: [
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "guid",
+          nillable: true,
+          type: "tns:guid"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "duration",
+          nillable: true,
+          type: "tns:duration"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "char",
+          nillable: true,
+          type: "tns:char"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "unsignedShort",
+          nillable: true,
+          type: "xs:unsignedShort"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "unsignedLong",
+          nillable: true,
+          type: "xs:unsignedLong"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "unsignedInt",
+          nillable: true,
+          type: "xs:unsignedInt"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "unsignedByte",
+          nillable: true,
+          type: "xs:unsignedByte"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "string",
+          nillable: true,
+          type: "xs:string"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "short",
+          nillable: true,
+          type: "xs:short"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "QName",
+          nillable: true,
+          type: "xs:QName"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "long",
+          nillable: true,
+          type: "xs:long"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "int",
+          nillable: true,
+          type: "xs:int"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "float",
+          nillable: true,
+          type: "xs:float"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "double",
+          nillable: true,
+          type: "xs:double"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "decimal",
+          nillable: true,
+          type: "xs:decimal"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "dateTime",
+          nillable: true,
+          type: "xs:dateTime"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "byte",
+          nillable: true,
+          type: "xs:byte"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "boolean",
+          nillable: true,
+          type: "xs:boolean"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "base64Binary",
+          nillable: true,
+          type: "xs:base64Binary"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "anyURI",
+          nillable: true,
+          type: "xs:anyURI"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "anyType",
+          nillable: true,
+          type: "xs:anyType"
+        }
+      ],
+      simple_types: [
+        %Lyex.Wsdl.Schema.SimpleType{
+          documentation: nil,
+          name: "guid",
+          restriction: %Lyex.Wsdl.Schema.Restriction{
+            base: "xs:string",
+            constraints: [
+              %Lyex.Wsdl.Schema.Restriction.Pattern{
+                value: "[\\da-fA-F]{8}-[\\da-fA-F]{4}-[\\da-fA-F]{4}-[\\da-fA-F]{4}-[\\da-fA-F]{12}"
+              }
+            ]
+          }
+        },
+        %Lyex.Wsdl.Schema.SimpleType{
+          documentation: nil,
+          name: "duration",
+          restriction: %Lyex.Wsdl.Schema.Restriction{
+            base: "xs:duration",
+            constraints: [
+              %Lyex.Wsdl.Schema.Restriction.MaxInclusive{
+                value: "P10675199DT2H48M5.4775807S"
+              },
+              %Lyex.Wsdl.Schema.Restriction.MinInclusive{
+                value: "-P10675199DT2H48M5.4775808S"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Pattern{
+                value: "\\-?P(\\d*D)?(T(\\d*H)?(\\d*M)?(\\d*(\\.\\d*)?S)?)?"
+              }
+            ]
+          }
+        },
+        %Lyex.Wsdl.Schema.SimpleType{
+          documentation: nil,
+          name: "char",
+          restriction: %Lyex.Wsdl.Schema.Restriction{
+            base: "xs:int",
+            constraints: []
+          }
+        }
+      ],
+      target_namespace: "http://schemas.microsoft.com/2003/10/Serialization/"
+    },
+    %Lyex.Wsdl.Schema{
+      complex_types: [
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityName",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "VoidDepositOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "ResidentNumber",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AccountNumber",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "VoidDepositInput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "MaxDepositAmount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "LastName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FirstName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBYear",
+              nillable: false,
+              type: "xs:int"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBMonth",
+              nillable: false,
+              type: "xs:int"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBDay",
+              nillable: false,
+              type: "xs:int"
+            }
+          ],
+          name: "LookupRecipientOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "RecipientNumber",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            }
+          ],
+          name: "LookupRecipientInput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "LastName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FirstName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityName",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "PostDepositOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "SurchargeFee",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "ServiceFee",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "ResidentNumber",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "PurposeCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DepositorSSN",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DepositAmount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AmountCollected",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AccountNumber",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "PostDepositInput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "MaxDepositAmount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "LastName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "KeefeTransId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FirstName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBYear",
+              nillable: false,
+              type: "xs:int"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBMonth",
+              nillable: false,
+              type: "xs:int"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOBDay",
+              nillable: false,
+              type: "xs:int"
+            }
+          ],
+          name: "PreValidateDepositOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "ResidentNumber",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Amount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AccountNumber",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "PreValidateDepositInput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Text",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Code",
+              nillable: false,
+              type: "tns:ResultCode"
+            }
+          ],
+          name: "ResultInfo",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Result",
+              nillable: true,
+              type: "tns:ResultInfo"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AccountNumber",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "RegisterDepositorOutput",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "VendorCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "UserId",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Password",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "Authentication",
+          restriction: nil
+        },
+        %Lyex.Wsdl.Schema.ComplexType{
+          documentation: nil,
+          elements: [
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Zip",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "WorkPhone",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Username",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "State",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Password",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "MiddleName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "LastName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "HomePhone",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FirstName",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "FacilityCode",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Email",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DepositAmount",
+              nillable: false,
+              type: "xs:decimal"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "DOB",
+              nillable: false,
+              type: "xs:dateTime"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "City",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "CellPhone",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Auth",
+              nillable: true,
+              type: "tns:Authentication"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "AltEmail",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Address2",
+              nillable: true,
+              type: "xs:string"
+            },
+            %Lyex.Wsdl.Schema.Element{
+              default: nil,
+              documentation: nil,
+              fixed: nil,
+              maxOccurs: nil,
+              minOccurs: 0,
+              name: "Address1",
+              nillable: true,
+              type: "xs:string"
+            }
+          ],
+          name: "RegisterDepositorInput",
+          restriction: nil
+        }
+      ],
+      elements: [
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "VoidDepositOutput",
+          nillable: true,
+          type: "tns:VoidDepositOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "VoidDepositInput",
+          nillable: true,
+          type: "tns:VoidDepositInput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "LookupRecipientOutput",
+          nillable: true,
+          type: "tns:LookupRecipientOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "LookupRecipientInput",
+          nillable: true,
+          type: "tns:LookupRecipientInput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PostDepositOutput",
+          nillable: true,
+          type: "tns:PostDepositOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PostDepositInput",
+          nillable: true,
+          type: "tns:PostDepositInput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PreValidateDepositOutput",
+          nillable: true,
+          type: "tns:PreValidateDepositOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "PreValidateDepositInput",
+          nillable: true,
+          type: "tns:PreValidateDepositInput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "ResultCode",
+          nillable: true,
+          type: "tns:ResultCode"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "ResultInfo",
+          nillable: true,
+          type: "tns:ResultInfo"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "RegisterDepositorOutput",
+          nillable: true,
+          type: "tns:RegisterDepositorOutput"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "Authentication",
+          nillable: true,
+          type: "tns:Authentication"
+        },
+        %Lyex.Wsdl.Schema.Element{
+          default: nil,
+          documentation: nil,
+          fixed: nil,
+          maxOccurs: nil,
+          minOccurs: nil,
+          name: "RegisterDepositorInput",
+          nillable: true,
+          type: "tns:RegisterDepositorInput"
+        }
+      ],
+      simple_types: [
+        %Lyex.Wsdl.Schema.SimpleType{
+          documentation: nil,
+          name: "ResultCode",
+          restriction: %Lyex.Wsdl.Schema.Restriction{
+            base: "xs:string",
+            constraints: [
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "INVALID_DEPOSITOR"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "INVALID_RESIDENT"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "INVALID_FACILITY"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "INVALID_INPUT_VALUES"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{
+                value: "AUTHENTICATION_FAILED"
+              },
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{value: "SYSTEM_ERROR"},
+              %Lyex.Wsdl.Schema.Restriction.Enumeration{value: "SUCCESS"}
+            ]
+          }
+        }
+      ],
+      target_namespace: "http://schemas.datacontract.org/2004/07/PaymentServiceEngine"
+    },
+    %Lyex.Wsdl.Schema{
+      complex_types: [],
       elements: [],
       simple_types: [],
-      target_namespace: "https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl"
+      target_namespace: "http://www.keefecommissary.net/VendorPaymentService/v0101/Imports"
     }
   ],
   service: %Lyex.Wsdl.Service{
-    name: "WeatherService",
+    name: "keefe",
     ports: [
       %Lyex.Wsdl.Service.Port{
-        address: "https://graphical.weather.gov:443/xml/SOAP_server/ndfdXMLserver.php",
-        binding: "tns:ndfdXMLBinding",
-        name: "ndfdXMLPort"
+        address: "https://services.keefegp.com/VendorPayment/VendorPaymentSvc.svc",
+        binding: "tns:BasicHttpBinding_IVendorPaymentSvc",
+        name: "BasicHttpBinding_IVendorPaymentSvc"
       }
     ]
   },
-  target_namespace: ""
+  target_namespace: "http://www.keefecommissary.net/VendorPaymentService/v0101"
 }

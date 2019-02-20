@@ -10,13 +10,7 @@ defmodule Lyex.Wsdl.Binding do
 
   defimpl String.Chars do
     def to_string(%{name: name, operations: operations}) do
-      ops =
-        Enum.map(operations, fn {k, _v} -> k end)
-        |> Enum.join("\n\t\t\t")
-
-      ~s(#{name} [#{length(operations)} operations]
-        \t\t#{ops}
-      )
+      ~s(#{name} [#{length(operations)} operations])
     end
   end
 
@@ -25,7 +19,7 @@ defmodule Lyex.Wsdl.Binding do
 
   def enter(startElement(prefix: 'soap', name: 'binding', attributes: attrs), state) do
     %{stack: [binding | rest]} = state
-    style = read_attr(attrs, 'style')
+    style = read_attr(attrs, 'style', "document")
     transport = read_attr(attrs, 'transport')
     binding = %{binding | transport: transport, style: style}
     %{state | stack: [binding | rest]}

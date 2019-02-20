@@ -23,17 +23,6 @@ defmodule Lyex.Wsdl.Import do
       |> SourceFile.resolve_file()
       |> Wsdl.parse()
 
-    # |> debug("parsed")
-
     %{state | imports: [imported | state.imports]}
-  end
-
-  defp debug(term, label) do
-    case String.Chars.impl_for(term) do
-      nil -> Logger.debug("#{label}: #{inspect(term, pretty: true)}")
-      _ -> Logger.debug("#{label}: #{to_string(term)}")
-    end
-
-    term
   end
 end

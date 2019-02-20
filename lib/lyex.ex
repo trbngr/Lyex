@@ -26,7 +26,7 @@ defmodule Lyex do
   def init(), do: usage()
 
   def generate_code(%Lyex{} = spec) do
-    code = init(spec) |> IO.inspect() |> Macro.to_string()
+    code = init(spec) |> Macro.to_string()
     File.write!("./test.ex", code)
   end
 

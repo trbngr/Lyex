@@ -119,6 +119,8 @@ defmodule Lyex.Wsdl.Assembler.Resolver do
         raise Lyex.Error, "Unable to locate message #{type}"
 
       message ->
+        message |> IO.inspect()
+
         %{
           type: type,
           message:
@@ -133,7 +135,7 @@ defmodule Lyex.Wsdl.Assembler.Resolver do
     name =
       case {el, part_name} do
         {nil, part_name} -> part_name
-        {_part_name, el} -> el
+        {el, _part_name} -> el
       end
 
     [_, name] = split_qname(name)

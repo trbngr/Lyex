@@ -66,6 +66,15 @@ defmodule OtherModule do
 end
 ```
 
+## Features
+
+- [x] WSDL Parsing.
+- [x] Function generation for each operation.
+- [x] Input/output struct generation.
+- [x] parse responses into output structs.
+- [ ] adding soap headers to requests.
+- [ ] supporting multiple ports.
+
 ## Overview of code
 
 - Resolve file and cache it

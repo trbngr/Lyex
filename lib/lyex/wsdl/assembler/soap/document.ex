@@ -4,9 +4,10 @@ defmodule Lyex.Wsdl.Assembler.Soap.Document do
 
   def generate_request_template(_operation, input, %Wsdl{target_namespace: ns}) do
     name = input.name || input.type
+    input |> IO.inspect()
 
     %{xml: body} =
-      generate_parameters(input.type, %{
+      generate_parameters(input, %{
         xml: "",
         path: []
       })
@@ -28,6 +29,7 @@ defmodule Lyex.Wsdl.Assembler.Soap.Document do
 
   defp generate_parameters(%Schema.Element{name: name, type: type}, %{xml: xml, path: path})
        when is_binary(type) do
+    name = name || type
     get_in_path = create_get_in_path(path, Macro.underscore(name))
 
     %{
@@ -46,6 +48,8 @@ defmodule Lyex.Wsdl.Assembler.Soap.Document do
   end
 
   defp generate_parameters(%Schema.Element{name: name, type: type}, %{xml: xml, path: path}) do
+    name = name || type
+
     %{xml: parameters_xml} =
       generate_parameters(type, %{xml: "", path: [Macro.underscore(name) | path]})
 
