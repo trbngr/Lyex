@@ -2,12 +2,11 @@ defmodule Lyex.Wsdl.Assembler.Soap.Document do
   alias Lyex.Wsdl
   alias Lyex.Wsdl.Schema
 
-  def generate_request_template(_operation, input, %Wsdl{target_namespace: ns}) do
-    name = input.name || input.type
-    input |> IO.inspect()
-
+  def generate_request_template(%Wsdl.PortType.Operation{name: operation_name}, input, %Wsdl{
+        target_namespace: ns
+      }) do
     %{xml: body} =
-      generate_parameters(input, %{
+      generate_parameters(input.type, %{
         xml: "",
         path: []
       })
@@ -15,11 +14,11 @@ defmodule Lyex.Wsdl.Assembler.Soap.Document do
     # %{xml: headers} = generate_parameters(arg1, arg2)
 
     ~s(<soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
-        <soap:Header>
+        <soap:Header/>
         <soap:Body>
-          <lyex:#{name} xmlns:lyex='#{ns}'>
+          <lyex:#{operation_name} xmlns:lyex='#{ns}'>
             #{body}
-          </lyex:#{name}>
+          </lyex:#{operation_name}>
         </soap:Body>
       </soap:Envelope>)
     |> String.replace("\n", "")
@@ -48,8 +47,6 @@ defmodule Lyex.Wsdl.Assembler.Soap.Document do
   end
 
   defp generate_parameters(%Schema.Element{name: name, type: type}, %{xml: xml, path: path}) do
-    name = name || type
-
     %{xml: parameters_xml} =
       generate_parameters(type, %{xml: "", path: [Macro.underscore(name) | path]})
 

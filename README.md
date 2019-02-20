@@ -72,6 +72,7 @@ end
 - [x] Function generation for each operation.
 - [x] Input/output struct generation.
 - [x] parse responses into output structs.
+- [ ] generate documentation for functions/structs.
 - [ ] Input validation.
 - [ ] adding soap headers to requests.
 - [ ] supporting multiple ports.

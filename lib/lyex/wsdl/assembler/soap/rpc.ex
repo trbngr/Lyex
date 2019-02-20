@@ -3,7 +3,7 @@ defmodule Lyex.Wsdl.Assembler.Soap.Rpc do
   alias Lyex.Wsdl.Schema
 
   def generate_request_template(
-        %Wsdl.PortType.Operation{name: name, input_namespace: ns} = op,
+        %Wsdl.PortType.Operation{name: name, input_namespace: ns},
         input,
         %Wsdl{}
       ) do
