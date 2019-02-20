@@ -34,13 +34,13 @@ defmodule OperationsTest do
   test "get ports" do
     wsdl =
       @service
-      |> Lyex.init()
+      |> Lyex.generate_code()
 
     # |> Map.get(:schemas)
 
-    File.write!(
-      "./test/params.ex",
-      inspect(wsdl, pretty: true, limit: :infinity, printable_limit: :infinity)
-    )
+    # File.write!(
+    #   "./test/params.ex",
+    #   inspect(wsdl, pretty: true, limit: :infinity, printable_limit: :infinity)
+    # )
   end
 end

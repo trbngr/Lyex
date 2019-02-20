@@ -2,7 +2,10 @@ defmodule Lyex.Wsdl.Binding do
   defstruct name: nil, type: nil, style: nil, transport: nil, operations: []
 
   defmodule Operation do
-    defstruct name: nil, action: nil, input: %{header: nil}, output: %{header: nil}
+    defstruct name: nil,
+              action: nil,
+              input: %{namespace: nil, header: nil},
+              output: %{namespace: nil, header: nil}
   end
 
   defimpl String.Chars do
@@ -56,6 +59,20 @@ defmodule Lyex.Wsdl.Binding do
 
   def enter(startElement(name: 'output'), state) do
     %{state | stack: [%{} | state.stack]}
+  end
+
+  def enter(
+        startElement(
+          name: 'body',
+          namespace: 'http://schemas.xmlsoap.org/wsdl/soap/',
+          attributes: attrs
+        ),
+        state
+      ) do
+    %{stack: [target | rest]} = state
+    namespace = read_attr(attrs, 'namespace')
+    target = Map.put(target, :namespace, namespace)
+    %{state | stack: [target | rest]}
   end
 
   def enter(startElement(prefix: 'soap', name: 'header', attributes: attrs), state) do

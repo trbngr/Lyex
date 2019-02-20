@@ -1,37 +1,30 @@
-defmodule Lyex.Wsdl.Compiler.Soap do
+defmodule Lyex.Wsdl.Assembler.Soap.Document do
   alias Lyex.Wsdl
   alias Lyex.Wsdl.Schema
 
-  def generate_request_template(%Wsdl{target_namespace: ns}, input, operation_binding) do
+  def generate_request_template(_operation, input, %Wsdl{target_namespace: ns}) do
     name = input.name || input.type
 
     %{xml: body} =
       generate_parameters(input.type, %{
         xml: "",
-        path: [Macro.underscore(name)]
+        path: []
       })
 
     # %{xml: headers} = generate_parameters(arg1, arg2)
 
     ~s(<soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
+        <soap:Header>
         <soap:Body>
           <lyex:#{name} xmlns:lyex='#{ns}'>
             #{body}
           </lyex:#{name}>
         </soap:Body>
       </soap:Envelope>)
+    |> String.replace("\n", "")
   end
 
   defp generate_parameters([], acc), do: acc
-
-  defp generate_parameters(name, %{xml: xml, path: path}) when is_binary(name) do
-    get_in_path = create_get_in_path(path, Macro.underscore(name))
-
-    %{
-      xml: xml <> "<lyex:#{name}><%= get_in(@input, #{get_in_path}) %></lyex:#{name}>",
-      path: path
-    }
-  end
 
   defp generate_parameters(%Schema.Element{name: name, type: type}, %{xml: xml, path: path})
        when is_binary(type) do
@@ -65,11 +58,17 @@ defmodule Lyex.Wsdl.Compiler.Soap do
   end
 
   defp create_get_in_path(path, member) do
-    parent =
-      path
-      |> Enum.map(fn p -> ":" <> p end)
-      |> Enum.join(", ")
+    case path do
+      [] ->
+        "[:" <> member <> "]"
 
-    "[" <> parent <> ", :" <> member <> "]"
+      path ->
+        parent =
+          path
+          |> Enum.map(fn p -> ":" <> p end)
+          |> Enum.join(", ")
+
+        "[" <> parent <> ", :" <> member <> "]"
+    end
   end
 end

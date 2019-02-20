@@ -1,6 +1,6 @@
 defmodule Lyex.Wsdl.Import do
   alias Lyex.SourceFile
-  alias Lyex.Wsdl.Parser
+  alias Lyex.Wsdl
   use Lyex.Wsdl.Parser.Context, debug: false
 
   def enter(startElement(name: 'import', attributes: attrs), state) do
@@ -21,8 +21,7 @@ defmodule Lyex.Wsdl.Import do
     imported =
       spec
       |> SourceFile.resolve_file()
-      # |> debug("resolved")
-      |> Parser.parse()
+      |> Wsdl.parse()
 
     # |> debug("parsed")
 

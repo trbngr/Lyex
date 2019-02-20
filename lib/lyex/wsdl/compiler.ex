@@ -1,34 +1,28 @@
 defmodule Lyex.Wsdl.Compiler do
   alias Lyex.Wsdl
-  alias Lyex.Wsdl.Compiler.{Resolver, Soap, Structures}
+  alias Lyex.Wsdl.Compiler.Structures
 
-  defmodule Error do
-    defexception [:message]
-  end
-
-  def compile(%Wsdl{port_types: port_types, schemas: schemas} = wsdl) do
-    schema = Enum.reduce(schemas, %Wsdl.Schema{}, &Wsdl.Schema.merge/2)
-
-    Enum.reduce(port_types, [], fn port_type, acc ->
-      Enum.reduce(port_type.operations, acc, fn operation, acc ->
-        [generate_operation(operation, wsdl, schema) | acc]
-      end)
+  def compile(%{service_name: service_name, port: port, port_type: port_type}) do
+    Enum.reduce(port_type.operations, [], fn operation, acc ->
+      [generate_operation(operation, service_name, port.address) | acc]
     end)
   end
 
-  defp generate_operation(
-         %Wsdl.PortType.Operation{} = operation,
-         %Wsdl{service: service} = wsdl,
-         %Wsdl.Schema{} = schema
-       ) do
-    operation_name = operation.name
-    input = operation.input |> Resolver.resolve_message(wsdl, schema)
-    output = operation.output |> Resolver.resolve_message(wsdl, schema)
+  defp generate_operation(%Wsdl.PortType.Operation{} = operation, service_name, address) do
+    %{
+      name: operation_name,
+      input: input,
+      output: output,
+      output_type: output_type,
+      request_template: request_template,
+      request_headers: request_headers
+    } = operation
 
-    service_name = service.name |> Macro.camelize() |> String.to_atom()
+    service_name = service_name |> Macro.camelize() |> String.to_atom()
 
     Structures.generate_structure(service_name, operation_name <> "Input", input)
     Structures.generate_structure(service_name, operation_name <> "Output", output)
+    output_struct = service_name |> Module.concat(operation_name <> "Output")
 
     function_name =
       to_string(operation_name)
@@ -36,9 +30,6 @@ defmodule Lyex.Wsdl.Compiler do
       |> String.to_atom()
 
     input_type = generate_input_parameter(service_name, operation_name <> "Input")
-
-    operation_binding = operation |> Resolver.resolve_operation_binding(wsdl, schema)
-    request_template = Soap.generate_request_template(wsdl, input, operation_binding)
 
     quote location: :keep, generated: true do
       def unquote(function_name)(unquote(input_type)) do
@@ -49,16 +40,14 @@ defmodule Lyex.Wsdl.Compiler do
             assigns: [input: input]
           )
 
-        binding = unquote(Macro.escape(operation_binding))
+        headers = unquote(request_headers)
 
-        headers = [
-          {"Content-Type", "text/xml; encoding=UTF-8"},
-          {"SOAPAction", binding.action},
-          {"User-Agent", "Lyex/0.1.0"}
-        ]
-
-        with {:ok, %{body: body}} <- HTTPoison.post(binding.action, envelope) do
-          :erlsom.simple_form(body)
+        with {:ok, %{body: body}} <- HTTPoison.post(unquote(address), envelope, headers) do
+          Wsdl.Ouput.read(
+            body,
+            unquote(output_type),
+            unquote(output_struct)
+          )
         end
       end
     end

@@ -28,10 +28,8 @@ defmodule Lyex.Wsdl.Parser.Context do
       defp noop(_, state), do: state
 
       defp debug(event, message, %{context: [context | other_contexts]} = state) do
-        %{spec: %{wsdl: file}} = state
-
         if @opts[:debug] do
-          Logger.debug("#{Path.basename(file)} #{context}: #{event}: #{inspect(message)}")
+          Logger.debug("#{context}: #{event}: #{inspect(message)}")
 
           if event == :exit_context do
             [next_context | _] = other_contexts

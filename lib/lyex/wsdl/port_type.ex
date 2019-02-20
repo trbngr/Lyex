@@ -2,7 +2,17 @@ defmodule Lyex.Wsdl.PortType do
   defstruct name: nil, operations: []
 
   defmodule Operation do
-    defstruct name: nil, documentation: nil, input: nil, output: nil
+    defstruct name: nil,
+              documentation: nil,
+              input: nil,
+              input_type: nil,
+              input_namespace: nil,
+              output: nil,
+              output_type: nil,
+              output_namespace: nil,
+              action: nil,
+              request_template: nil,
+              request_headers: []
   end
 
   defimpl String.Chars do

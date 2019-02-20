@@ -2,7 +2,7 @@
 
 I've tried all the SOAP libraries for Elixir without success.
 
-So Lyex was born. 
+So Lyex was born.
 
 I had to learn a ~~bit~~ lot about WSDL. I'm pretty sure this won't work on a bunch of WSDLs in the wild.
 
@@ -27,7 +27,7 @@ be found at [https://hexdocs.pm/lyex](https://hexdocs.pm/lyex).
 
 ## Usage
 
-use the Lyex.Client with configuration to generate a full SOAP client with functions and structs. 
+use the Lyex.Client with configuration to generate a full SOAP client with functions and structs.
 
 ```elixir
 defmodule KeefeClient do
@@ -65,3 +65,13 @@ defmodule OtherModule do
   end
 end
 ```
+
+## Overview of code
+
+- Resolve file and cache it
+
+- Parse the WSDL file via SAX. When we hit an import, start at step 1 and store it into state.imports. Merge all imports into the main WSDL
+
+- Assemble the WSDL by resolving all messages, bindings, etc.
+
+- Generate code
