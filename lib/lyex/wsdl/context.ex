@@ -58,29 +58,11 @@ defmodule Lyex.Wsdl.Parser.Context do
       def consume(xml, state) do
         fun =
           case xml do
-            startElement() ->
-              fn xml, state ->
-                debug(:enter, xml, state)
-                enter(xml, state)
-              end
-
-            endElement() ->
-              fn xml, state ->
-                debug(:exit, xml, state)
-                exit(xml, state)
-              end
-
-            elementValue() ->
-              fn xml, state ->
-                debug(:value, xml, state)
-                value(xml, state)
-              end
-
-            prefixMapping() ->
-              &read_prefix/2
-
-            _ ->
-              &noop/2
+            startElement() -> &enter/2
+            endElement() -> &exit/2
+            elementValue() -> &value/2
+            prefixMapping() -> &read_prefix/2
+            _ -> &noop/2
           end
 
         fun.(xml, state)
