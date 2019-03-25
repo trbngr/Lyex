@@ -43,8 +43,10 @@ defmodule Lyex.Wsdl.Compiler do
           EEx.eval_string(unquote(request_template),
             assigns: [input: input]
           )
+          |> IO.inspect(label: "input")
 
-        with {:ok, %{body: body}} <- HTTPoison.post(address, envelope, headers) do
+        with {:ok, %{body: body}} <-
+               HTTPoison.post(address, envelope, headers) |> IO.inspect(label: "response") do
           read(
             body,
             unquote(output_type),
