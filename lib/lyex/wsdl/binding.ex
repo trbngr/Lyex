@@ -17,7 +17,8 @@ defmodule Lyex.Wsdl.Binding do
   alias Lyex.Wsdl
   use Lyex.Wsdl.Parser.Context, debug: false
 
-  def enter(startElement(prefix: 'soap', name: 'binding', attributes: attrs), state) do
+  def enter(startElement(prefix: prefix, name: 'binding', attributes: attrs), state)
+      when prefix in ['soap', 'soap12'] do
     %{stack: [binding | rest]} = state
     style = read_attr(attrs, 'style', "document")
     transport = read_attr(attrs, 'transport')
@@ -34,7 +35,8 @@ defmodule Lyex.Wsdl.Binding do
     |> enter_context()
   end
 
-  def enter(startElement(prefix: 'soap', name: 'operation', attributes: attrs), state) do
+  def enter(startElement(prefix: prefix, name: 'operation', attributes: attrs), state)
+      when prefix in ['soap', 'soap12'] do
     %{stack: [operation | rest]} = state
     action = read_attr(attrs, 'soapAction')
     operation = %{operation | action: action}
@@ -43,16 +45,18 @@ defmodule Lyex.Wsdl.Binding do
 
   def enter(startElement(name: 'operation', attributes: attrs), state) do
     name = read_attr(attrs, 'name')
+
     operation = %Operation{name: name}
+
     %{state | stack: [operation | state.stack]}
   end
 
   def enter(startElement(name: 'input'), state) do
-    %{state | stack: [%{} | state.stack]}
+    %{state | stack: [%{namespace: nil, header: nil} | state.stack]}
   end
 
   def enter(startElement(name: 'output'), state) do
-    %{state | stack: [%{} | state.stack]}
+    %{state | stack: [%{namespace: nil, header: nil} | state.stack]}
   end
 
   def enter(
@@ -69,7 +73,8 @@ defmodule Lyex.Wsdl.Binding do
     %{state | stack: [target | rest]}
   end
 
-  def enter(startElement(prefix: 'soap', name: 'header', attributes: attrs), state) do
+  def enter(startElement(prefix: prefix, name: 'header', attributes: attrs), state)
+      when prefix in ['soap', 'soap12'] do
     %{stack: [target | rest]} = state
     part = read_attr(attrs, 'part')
     message = read_attr(attrs, 'message')
@@ -91,7 +96,10 @@ defmodule Lyex.Wsdl.Binding do
     %{state | stack: [operation | rest]}
   end
 
-  def exit(endElement(prefix: 'soap', name: 'operation'), state), do: state
+  def exit(endElement(prefix: prefix, name: 'operation'), state)
+      when prefix in ['soap', 'soap12'] do
+    state
+  end
 
   def exit(endElement(name: 'operation'), state) do
     %{stack: [operation, binding | rest]} = state
@@ -104,7 +112,10 @@ defmodule Lyex.Wsdl.Binding do
     end
   end
 
-  def exit(endElement(prefix: 'soap', name: 'binding'), state), do: state
+  def exit(endElement(prefix: prefix, name: 'binding'), state)
+      when prefix in ['soap', 'soap12'] do
+    state
+  end
 
   def exit(endElement(name: 'binding'), state) do
     %{stack: [binding, wsdl | rest]} = state
