@@ -34,7 +34,10 @@ defmodule Lyex.Wsdl.Compiler do
     quote location: :keep, generated: true do
       def unquote(function_name)(unquote(input_type)) do
         import Lyex.Wsdl.Output, only: [read: 3]
-        input = Keyword.get(binding(), :input)
+
+        input =
+          Keyword.get(binding(), :input)
+          |> IO.inspect(label: "input")
 
         address = unquote(address)
         headers = unquote(request_headers)
@@ -43,7 +46,7 @@ defmodule Lyex.Wsdl.Compiler do
           EEx.eval_string(unquote(request_template),
             assigns: [input: input]
           )
-          |> IO.inspect(label: "input")
+          |> IO.inspect(label: "envelope")
 
         with {:ok, %{body: body}} <-
                HTTPoison.post(address, envelope, headers) |> IO.inspect(label: "response") do
