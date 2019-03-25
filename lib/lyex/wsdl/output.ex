@@ -11,7 +11,7 @@ defmodule Lyex.Wsdl.Output do
     }
 
     {:ok, %{values: values}, _} = :erlsom.parse_sax(body, state, &read/2)
-    struct(output_type, values) |> IO.inspect()
+    struct(output_type, values)
   end
 
   defp read(xml, state) do

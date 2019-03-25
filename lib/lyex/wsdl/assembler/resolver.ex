@@ -119,7 +119,7 @@ defmodule Lyex.Wsdl.Assembler.Resolver do
         raise Lyex.Error, "Unable to locate message #{type}"
 
       message ->
-        message |> IO.inspect()
+        message
 
         %{
           type: type,
