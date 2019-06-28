@@ -1,3 +1,5 @@
+# This project is not usable for most WSDLs. It probably won't work for you. Please don't use in production!
+
 # Lyex
 
 I've tried all the SOAP libraries for Elixir without success.
